@@ -47,6 +47,9 @@ const Navbar=()=>{
           <li><a href="#">CONTACT US</a></li>
         </ul>
       </div>
+      <div className="contact-box">
+        <p>Donate Now</p>
+      </div>
       <div className="search-box">
         <i className='bx bx-search'></i>
         <div className="input-box">
