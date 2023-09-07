@@ -1,0 +1,26 @@
+/* Home.css */
+  
+  /* Styles for the root element of the Home component */
+  .home-page {
+    /* Your CSS styles specific to the Home component */
+    /* For example: */
+    padding: 20px;
+  }
+  
+  /* Styles for the Slider component */
+  
+  /* Styles for the individual slides within the Slider component */
+  .home-page .slick-slide {
+    /* Your CSS styles specific to the individual slides */
+    /* For example: */
+    text-align: center;
+  }
+  
+  /* Styles for the images within the Slider component */
+  .home-page .slick-slide img {
+    /* Your CSS styles specific to the images */
+    /* For example: */
+    max-width: 100%;
+    height: 700px;
+  }
+  
