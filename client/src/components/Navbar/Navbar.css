@@ -23,8 +23,6 @@ nav {
   z-index: 99;
 }
 
-/* Rest of your CSS remains the same */
-
 nav .navbar{
   height: 100%;
   max-width: 1250px;
@@ -33,23 +31,21 @@ nav .navbar{
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  /* background: red; */
   padding: 0 50px;
 }
-.navbar .logo {
-  flex: 1; /* Allow the logo to grow and take available space */
-}
+
 .navbar .logo a{
   font-size: 30px;
   color: #000000;
   text-decoration: none;
   font-weight: 600;
+  margin-right: 50px;
 }
 nav .navbar .nav-links {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; Remove this line */
-  margin-right: 20px; /* Add right margin to create space between menu items and contact box */
+  margin-right: 50px;
+   /* Add right margin to create space between menu items and contact box */
 }
 nav .navbar .links{
   display: flex;
@@ -60,6 +56,7 @@ nav .navbar .links li{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-right: 10px;
   list-style: none;
   padding: 0 14px;
 }
@@ -129,6 +126,11 @@ nav .navbar .links li:hover .js-sub-menu{
 }
 .links li .sub-menu .more:hover .more-sub-menu{
   display: block;
+}
+
+.icon-large {
+  font-size: 22px; /* Adjust the font size to your preferred size */
+  cursor: pointer;
 }
 
 .navbar .contact-box {
