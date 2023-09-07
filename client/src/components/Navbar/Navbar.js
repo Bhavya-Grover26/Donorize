@@ -1,5 +1,8 @@
 import React from 'react';
 import './Navbar.css';
+import { BsSearch } from 'react-icons/bs';
+import { BiUser } from 'react-icons/bi';
+import { IoNotificationsOutline } from 'react-icons/io5';
 
 const Navbar=()=>{
   return(
@@ -15,37 +18,23 @@ const Navbar=()=>{
         <ul className="links">
           <li><a href="#">HOME</a></li>
           <li>
-            <a href="#">HTML & CSS</a>
-            <i className='bx bxs-chevron-down htmlcss-arrow arrow  '></i>
-            <ul className="htmlCss-sub-menu sub-menu">
-              <li><a href="#">Web Design</a></li>
-              <li><a href="#">Login Forms</a></li>
-              <li><a href="#">Card Design</a></li>
-              <li className="more">
-                <span><a href="#">More</a>
-                <i className='bx bxs-chevron-right arrow more-arrow'></i>
-              </span>
-                <ul className="more-sub-menu sub-menu">
-                  <li><a href="#">Neumorphism</a></li>
-                  <li><a href="#">Pre-loader</a></li>
-                  <li><a href="#">Glassmorphism</a></li>
-                </ul>
-              </li>
-            </ul>
+            <a href="#">EVENTS</a>
           </li>
           <li>
-            <a href="#">JAVASCRIPT</a>
-            <i className='bx bxs-chevron-down js-arrow arrow '></i>
-            <ul className="js-sub-menu sub-menu">
-              <li><a href="#">Dynamic Clock</a></li>
-              <li><a href="#">Form Validation</a></li>
-              <li><a href="#">Card Slider</a></li>
-              <li><a href="#">Complete Website</a></li>
-            </ul>
+            <a href="#">CAMPAIGNS</a>
+            
           </li>
-          <li><a href="#">ABOUT US</a></li>
-          <li><a href="#">CONTACT US</a></li>
+          <li><a href="#">HISTORY</a></li>
+          <li><a href="#">LOG IN</a></li>
+          <li><i className='bx bx-search icon-large'><BsSearch/></i></li>
+          <li><i className='bx bx-user icon-large'><BiUser/></i></li>
+          <li><i className='bx bx-notif icon-large'><IoNotificationsOutline/></i></li>
+
+      
         </ul>
+      </div>
+      <div className="contact-box">
+        <p>Donate Now</p>
       </div>
       <div className="search-box">
         <i className='bx bx-search'></i>
