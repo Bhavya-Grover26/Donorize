@@ -26,13 +26,13 @@ const Home = () => {
     <div className="home-page">
       <Slider {...settings}>
         <div>
-          <img src="https://i.ytimg.com/vi/e5g1MqWOMNI/maxresdefault.jpg" alt="Image 1" />
+        <img src="https://sadsindia.org/wp-content/themes/fusion/images/hero/happy_children_SADS_1920x800.jpg" alt="Image 2" />
         </div>
         <div>
-          <img src="https://cdn.givind.org/static/images/campaign/target-image1.jpg" alt="Image 2" />
+        <img src="https://donate.smilefoundationindia.org/images/shikshanaruke/DmEonEblPlNoVAFLZjHxCVIjHrS6Ljf15kUZLC57.jpg" alt="Image 1" />
         </div>
         <div>
-          <img src="https://images.jdmagicbox.com/quickquotes/listicle/listicle_1684382273524_k358b_1040x500.jpg" alt="Image 3" />
+          <img src="https://www.savethechildren.org/content/dam/global/images/countries/vietnam/vietnam-girls-m111823-hero.jpg/_jcr_content/renditions/original.img.jpg" alt="Image 3" />
         </div>
       </Slider>
       
@@ -70,6 +70,7 @@ const Home = () => {
           </div>
         </div>
     </div>
+    
     </div>
     
   );
