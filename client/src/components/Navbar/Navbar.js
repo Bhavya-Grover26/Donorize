@@ -1,5 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
+import Event from '../Events/Event';
+import Home from '../Home/Home';
 import { BsSearch } from 'react-icons/bs';
 import { BiUser } from 'react-icons/bi';
 import { IoNotificationsOutline } from 'react-icons/io5';
@@ -16,9 +19,11 @@ const Navbar=()=>{
           <i className='bx bx-x' ></i>
         </div>
         <ul className="links">
-          <li><a href="#">HOME</a></li>
           <li>
-            <a href="#">EVENTS</a>
+          <Link to="/">HOME</Link>
+          </li>
+          <li>
+          <Link to="/event">EVENTS</Link>
           </li>
           <li>
             <a href="#">CAMPAIGNS</a>
