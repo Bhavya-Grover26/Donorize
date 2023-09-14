@@ -3,8 +3,8 @@ import './Choose.css';
 
 const Choose = () => {
   return (
-    <body>
-      <div className="container">
+    <div className='body'>
+      <div className="containerchoose">
         <div className="drop" style={{ background: 'linear-gradient(135deg, #f25602, #8c6b9e)' }}>
           <div className="content">
             <h2>Organization</h2>
@@ -20,7 +20,7 @@ const Choose = () => {
           </div>
         </div>
       </div>
-    </body>
+    </div>
   );
 }
 
