@@ -14,10 +14,13 @@ const Navbar=()=>{
       <i className='bx bx-menu'></i>
       <div className="logo"><a href="#">CodingLab</a></div>
       <div className="nav-links">
-        <div className="sidebar-logo">
+      <div className="sidebar-logo">
+        {/* Wrap the logo in a Link */}
+        <Link to="/">
           <span className="logo-name">CodingLab</span>
-          <i className='bx bx-x' ></i>
-        </div>
+        </Link>
+        <i className='bx bx-x'></i>
+      </div>
         <ul className="links">
           <li>
           <Link to="/">HOME</Link>
@@ -29,7 +32,9 @@ const Navbar=()=>{
             <a href="#">CAMPAIGNS</a>
             
           </li>
-          <li><a href="#">HISTORY</a></li>
+          <li>
+          <Link to="/history">HISTORY</Link>
+          </li>
           <li><a href="#">LOG IN</a></li>
           <li><i className='bx bx-search icon-large'><BsSearch/></i></li>
           <li><i className='bx bx-user icon-large'><BiUser/></i></li>
