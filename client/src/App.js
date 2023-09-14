@@ -4,14 +4,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import Home from './components/Home/Home';
 import Event from './components/Events/Event';
 import History from './components/History/History';
+import Choose from './components/Choose'
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/user" element={<Home />} />
         <Route path="/event" element={<Event />} /> 
         <Route path="/history" element={<History />} /> 
+        <Route path="/" element={<Choose />} /> 
       </Routes>
     </Router>
   );
