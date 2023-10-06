@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import Home from './components/Home/Home';
 import Event from './components/Events/Event';
 import History from './components/History/History';
-import Choose from './components/Choose'
+import Choose from './components/Choose/Choose';
 
 function App() {
   return (
