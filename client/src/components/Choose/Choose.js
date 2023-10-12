@@ -10,7 +10,7 @@ const Choose = () => {
           <div className="content">
             <h2>Organization</h2>
             <p><b>HTML</b> is the language for describing the structure of Web pages.</p>
-            <a href="#">Click here</a>
+            <Link to="/org">Click here</Link>
           </div>
         </div>
         <div className="drop" style={{ background: 'linear-gradient(135deg, #00a89d, #8c6b9e)' }}>
