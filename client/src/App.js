@@ -23,6 +23,8 @@ function App() {
         <Route path="/user" element={<Home />} />
         <Route path="/event" element={<Event />} /> 
         <Route path="/history" element={<History />} /> 
+        <Route path="/addevent" element={<AddEvent />} /> 
+        <Route path="/org" element={<NavbarOrg />} /> 
         <Route path="/" element={<Choose />} /> 
         <Route path="/User_login" element={<User_login />} /> 
         <Route path="/Dashboard" element={<Dashboard />}/>
