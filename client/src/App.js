@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes
 
 import Home from './components/Home/Home';
@@ -6,9 +6,17 @@ import Event from './components/Events/Event';
 import History from './components/History/History';
 import Choose from './components/Choose/Choose';
 import User_login from './components/User_login/User_login';
-import DashboardOrg from './components/DashboardOrg/DashboardOrg';
-
+import "./assets/scss/app.scss"
+import Dashboard from "./pages/Dashboard"
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import Header from "./components/Layout/Header"
+import Footer from "./components/Layout/Footer"
+import SideBarContainer from "./components/Layout/SideBarContainer"
+import Transactions from "./pages/Transactions";
 function App() {
+  library.add(fas)
+  const [count, setCount] = useState(0)
   return (
     <Router>
       <Routes>
@@ -17,7 +25,8 @@ function App() {
         <Route path="/history" element={<History />} /> 
         <Route path="/" element={<Choose />} /> 
         <Route path="/User_login" element={<User_login />} /> 
-        <Route path="/DashboardOrg" element={<DashboardOrg />} /> 
+        <Route path="/Dashboard" element={<Dashboard />}/>
+        <Route path="/transactions" element={<Transactions />} />
       </Routes>
     </Router>
   );
