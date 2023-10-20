@@ -29,7 +29,7 @@ const Navbar=()=>{
           <Link to="/event">EVENTS</Link>
           </li>
           <li>
-            <a href="#">CAMPAIGNS</a>
+            <a href="/campaign">CAMPAIGNS</a>
             
           </li>
           <li>
