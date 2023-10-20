@@ -26,6 +26,7 @@ function App() {
         <Route path="/user" element={<Home />} />
         <Route path="/event" element={<Event />} /> 
         <Route path="/history" element={<History />} /> 
+        <Route path="/campaign" element={<Campaign />} />
         <Route path="/addevent" element={<AddEvent />} /> 
         <Route path="/org" element={<NavbarOrg />} /> 
         <Route path="/" element={<Choose />} /> 
