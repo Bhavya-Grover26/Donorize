@@ -6,7 +6,8 @@ import Event from './components/Events/Event';
 import History from './components/History/History';
 import Choose from './components/Choose/Choose';
 import AddEvent from './components/AddEventOrg/AddEventOrg';
-import NavbarOrg from './components/NavbarOrg/NavbarOrg'
+import NavbarOrg from './components/NavbarOrg/NavbarOrg';
+import Campaign from './components/Campaigns/Campaigns';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/user" element={<Home />} />
         <Route path="/event" element={<Event />} /> 
         <Route path="/history" element={<History />} /> 
+        <Route path="/campaign" element={<Campaign />} />
         <Route path="/addevent" element={<AddEvent />} /> 
         <Route path="/org" element={<NavbarOrg />} /> 
         <Route path="/" element={<Choose />} /> 

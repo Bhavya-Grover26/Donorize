@@ -43,7 +43,7 @@ const NavbarOrg=()=>{
       
         </ul>
       </div>
-      <div className="contact-box">
+      <div className="contact-box2">
         <p>Donate Now</p>
       </div>
       <div className="search-box">
