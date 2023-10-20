@@ -14,6 +14,7 @@ import {
   import ActivityComp from "./ActivityComp";
   import CityRankings from "./CityRankings";
   import { periodData } from "../../data.js";
+  import NavbarOrg from '../../components/NavbarOrg/NavbarOrg';
   
   const Dashboard = () => {
   
@@ -31,10 +32,7 @@ import {
     return (
       <>
           <Container fluid>
-            <Breadcrumbs
-              title="Admin"
-              breadcrumbItem="Dashboard"
-              />
+          <NavbarOrg/>
             <Row>
               <Col xl="4">
                 <CardComp />

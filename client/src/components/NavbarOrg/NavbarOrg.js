@@ -12,18 +12,18 @@ const NavbarOrg=()=>{
     <nav>
     <div className="navbar-mod">
       <i className='bx bx-menu'></i>
-      <div className="logo"><a href="#">CodingLab</a></div>
+      <div className="logo"><a href="#">Donorize</a></div>
       <div className="nav-links">
       <div className="sidebar-logo">
         {/* Wrap the logo in a Link */}
         <Link to="/">
-          <span className="logo-name">CodingLab</span>
+          <span className="logo-name">Donorize</span>
         </Link>
         <i className='bx bx-x'></i>
       </div>
         <ul className="links">
           <li>
-          <Link to="/user">HOME</Link>
+          <Link to="/Dashboard">HOME</Link>
           </li>
           <li>
           <Link to="/addevent">ADD EVENTS</Link>
@@ -33,7 +33,7 @@ const NavbarOrg=()=>{
             
           </li>
           <li>
-          <Link to="/history">HISTORY</Link>
+          <Link to="/">HISTORY</Link>
           </li>
           <li><a href="#">LOG IN</a></li>
           <li><i className='bx bx-search icon-large'><BsSearch/></i></li>
@@ -42,9 +42,6 @@ const NavbarOrg=()=>{
 
       
         </ul>
-      </div>
-      <div className="contact-box">
-        <p>Donate Now</p>
       </div>
       <div className="search-box">
         <i className='bx bx-search'></i>

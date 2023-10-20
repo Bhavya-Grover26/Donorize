@@ -5,6 +5,7 @@ import Home from './components/Home/Home';
 import Event from './components/Events/Event';
 import History from './components/History/History';
 import Choose from './components/Choose/Choose';
+import Choose1 from './components/Choose1/Choose1';
 import User_login from './components/User_login/User_login';
 import "./assets/scss/app.scss"
 import Dashboard from "./pages/Dashboard"
@@ -14,6 +15,8 @@ import Header from "./components/Layout/Header"
 import Footer from "./components/Layout/Footer"
 import SideBarContainer from "./components/Layout/SideBarContainer"
 import Transactions from "./pages/Transactions";
+import AddEvent from './components/AddEventOrg/AddEventOrg';
+import NavbarOrg from './components/NavbarOrg/NavbarOrg';
 function App() {
   library.add(fas)
   const [count, setCount] = useState(0)
@@ -26,6 +29,7 @@ function App() {
         <Route path="/addevent" element={<AddEvent />} /> 
         <Route path="/org" element={<NavbarOrg />} /> 
         <Route path="/" element={<Choose />} /> 
+        <Route path="/choose1" element={<Choose1 />} /> 
         <Route path="/User_login" element={<User_login />} /> 
         <Route path="/Dashboard" element={<Dashboard />}/>
         <Route path="/transactions" element={<Transactions />} />

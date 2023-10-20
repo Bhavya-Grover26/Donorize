@@ -12,12 +12,12 @@ const Navbar=()=>{
     <nav>
     <div className="navbar">
       <i className='bx bx-menu'></i>
-      <div className="logo"><a href="#">CodingLab</a></div>
+      <div className="logo"><a href="#">Donorize</a></div>
       <div className="nav-links">
       <div className="sidebar-logo">
         {/* Wrap the logo in a Link */}
         <Link to="/">
-          <span className="logo-name">CodingLab</span>
+          <span className="logo-name">Donorize</span>
         </Link>
         <i className='bx bx-x'></i>
       </div>
