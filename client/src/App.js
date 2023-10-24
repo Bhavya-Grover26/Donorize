@@ -5,8 +5,8 @@ import Home from './components/Home/Home';
 import Event from './components/Events/Event';
 import History from './components/History/History';
 import Choose from './components/Choose/Choose';
-import Choose1 from './components/Choose1/Choose1';
 import User_login from './components/User_login/User_login';
+import Org_login from './components/Org_login/Org_login';
 import "./assets/scss/app.scss"
 import Dashboard from "./pages/Dashboard"
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -26,12 +26,11 @@ function App() {
         <Route path="/user" element={<Home />} />
         <Route path="/event" element={<Event />} /> 
         <Route path="/history" element={<History />} /> 
-        <Route path="/campaign" element={<Campaign />} />
         <Route path="/addevent" element={<AddEvent />} /> 
         <Route path="/org" element={<NavbarOrg />} /> 
         <Route path="/" element={<Choose />} /> 
-        <Route path="/choose1" element={<Choose1 />} /> 
         <Route path="/User_login" element={<User_login />} /> 
+        <Route path="/Org_login" element={<Org_login />} />
         <Route path="/Dashboard" element={<Dashboard />}/>
         <Route path="/transactions" element={<Transactions />} />
       </Routes>

@@ -1,76 +1,75 @@
 import React, { useState } from 'react';
 import './User_login.css';
 
-const UserLogin = () => {
-  // Use React state to manage input values
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+const User_login = () => {
+  const [activeForm, setActiveForm] = useState('login');
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
-  };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleLogin = () => {
-    // Add your login logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
+  const switchForm = (formType) => {
+    setActiveForm(formType);
   };
 
   return (
-    <div className="materialContainer">
-      <div className="box">
-        <div className="title">LOGIN</div>
-
-        <div className="input">
-          <label htmlFor="name">Username</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-          <span className="spin"></span>
-        </div>
-
-        <div className="input">
-          <label htmlFor="pass">Password</label>
-          <input
-            type="password"
-            name="pass"
-            id="pass"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <span className="spin"></span>
-        </div>
-
-        <div className="button login">
-          <button onClick={handleLogin}>
-            <span>GO</span> <i className="fa fa-check"></i>
+    <section className="forms-section">
+      <div className="forms">
+        <div className={`form-wrapper ${activeForm === 'login' ? 'is-active' : ''}`}>
+          <button
+            type="button"
+            className="switcher switcher-login"
+            onClick={() => switchForm('login')}
+          >
+            Login
+            <span className="underline"></span>
           </button>
+          <form className="form form-login">
+            <fieldset>
+              <legend>Please, enter your email and password for login.</legend>
+              <div className="input-block">
+                <label htmlFor="login-email">E-mail</label>
+                <input id="login-email" type="email" required />
+              </div>
+              <div className="input-block">
+                <label htmlFor="login-password">Password</label>
+                <input id="login-password" type="password" required />
+              </div>
+            </fieldset>
+            <button type="submit" className="btn-login">
+              Login
+            </button>
+          </form>
         </div>
-
-        <a href="" className="pass-forgot">
-          Forgot your password?
-        </a>
-      </div>
-
-      <div className="overbox">
-        <div className="material-button alt-2">
-          <span className="shape"></span>
+        <div className={`form-wrapper ${activeForm === 'signup' ? 'is-active' : ''}`}>
+          <button
+            type="button"
+            className="switcher switcher-signup"
+            onClick={() => switchForm('signup')}
+          >
+            Sign Up
+            <span className="underline"></span>
+          </button>
+          <form className="form form-signup">
+            <fieldset>
+              <legend>Please, enter your email, password, and password confirmation for sign up.</legend>
+              <div className="input-block">
+                <label htmlFor="signup-email">E-mail</label>
+                <input id="signup-email" type="email" required />
+              </div>
+              <div className="input-block">
+                <label htmlFor="signup-password">Password</label>
+                <input id="signup-password" type="password" required />
+              </div>
+              <div className="input-block">
+                <label htmlFor="signup-password-confirm">Confirm password</label>
+                <input id="signup-password-confirm" type="password" required />
+              </div>
+            </fieldset>
+            <button type="submit" className="btn-signup">
+              Continue
+            </button>
+          </form>
         </div>
-
-        <div className="title">REGISTER</div>
-
-        {/* Add registration input fields and logic here */}
       </div>
-    </div>
+    </section>
   );
 };
 
-export default UserLogin;
+export default User_login;
