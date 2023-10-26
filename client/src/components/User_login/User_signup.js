@@ -2,32 +2,34 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './User_login.css';
 
-const User_login = () => {
+const Userlogin = () => {
   const navigate = useNavigate();
   const [activeForm, setActiveForm] = useState('login');
   const [username,setUsername] = useState("")
   const [password,setPasword] = useState("")
   const [email,setEmail] = useState("")
 
-  const [usernamelog,setUsernamelog] = useState("")
-  const [passwordlog,setPaswordlog] = useState("")
 
-  const PostData = () =>{
-    fetch('/signupuser',{
+  const LoginData = () =>{
+    fetch('/signinuser',{
       method:"post",
       headers:{
         "Content-Type":"application/json"
       },
       body:JSON.stringify({
-        username,
-        email,
-        password
+        username, // or usernamelog, depending on what your server expects
+        password 
 
       })
     }).then(res=>res.json())
     .then(data=>{
+      console.log(data)
       if(data.error){
         console.log(data)
+      }
+      else{
+        console.log("Signed in")
+        navigate('/user')
       }
     })
     .catch(err=>{
@@ -35,7 +37,6 @@ const User_login = () => {
     })
   }
 
-  
   const switchForm = (formType) => {
     setActiveForm(formType);
   };
@@ -67,46 +68,19 @@ const User_login = () => {
             <button
   type="submit"
   className="btn-login"
-
+  onClick={(event) => {
+    event.preventDefault();
+    LoginData();
+  }}
 >
   Login
 </button>
           </form>
         </div>
-        <div className={`form-wrapper ${activeForm === 'signup' ? 'is-active' : ''}`}>
-          <button
-            type="button"
-            className="switcher switcher-signup"
-            onClick={() => switchForm('signup')}
-          >
-            Sign Up
-            <span className="underline"></span>
-          </button>
-          <form className="form form-signup">
-            <fieldset>
-              <legend>Please, enter your email, password, and username for sign up.</legend>
-              <div className="input-block">
-                <label htmlFor="signup-email">E-mail</label>
-                <input id="signup-email" type="email" value={email} onChange={(e)=>setEmail(e.target.value)} required />
-              </div>
-              <div className="input-block">
-                <label htmlFor="signup-password">Username</label>
-                <input id="signup-password" type="username" value={username} onChange={(e)=>setUsername(e.target.value)} required />
-              </div>
-              <div className="input-block">
-                <label htmlFor="signup-password-confirm">Password</label>
-                <input id="signup-password-confirm" type="password" value={password} onChange={(e)=>setPasword(e.target.value)} required />
-              </div>
-            </fieldset>
-            <button type="submit" className="btn-signup"
-            onClick={()=>PostData()}>
-              Continue
-            </button>
-          </form>
-        </div>
+
       </div>
     </section>
   );
 };
 
-export default User_login;
+export default Userlogin;

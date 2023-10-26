@@ -6,6 +6,7 @@ import Event from './components/Events/Event';
 import History from './components/History/History';
 import Choose from './components/Choose/Choose';
 import User_login from './components/User_login/User_login';
+import Userlogin from './components/User_login/User_login';
 import Org_login from './components/Org_login/Org_login';
 import "./assets/scss/app.scss"
 import Dashboard from "./pages/Dashboard"
@@ -17,6 +18,8 @@ import SideBarContainer from "./components/Layout/SideBarContainer"
 import Transactions from "./pages/Transactions";
 import AddEvent from './components/AddEventOrg/AddEventOrg';
 import NavbarOrg from './components/NavbarOrg/NavbarOrg';
+import Campaign from './components/Campaigns/Campaigns'
+
 function App() {
   library.add(fas)
   const [count, setCount] = useState(0)
@@ -25,11 +28,13 @@ function App() {
       <Routes>
         <Route path="/user" element={<Home />} />
         <Route path="/event" element={<Event />} /> 
+        <Route path="/campaign" element={<Campaign />} /> 
         <Route path="/history" element={<History />} /> 
         <Route path="/addevent" element={<AddEvent />} /> 
         <Route path="/org" element={<NavbarOrg />} /> 
         <Route path="/" element={<Choose />} /> 
         <Route path="/User_login" element={<User_login />} /> 
+        <Route path="/Userlogin" element={<Userlogin />} /> 
         <Route path="/Org_login" element={<Org_login />} />
         <Route path="/Dashboard" element={<Dashboard />}/>
         <Route path="/transactions" element={<Transactions />} />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Org_login.css';
 
 const Org_login = () => {
@@ -33,7 +34,9 @@ const Org_login = () => {
               </div>
             </fieldset>
             <button type="submit" className="btn-login">
-              Login
+            <Link to='/Dashboard'>
+                 Login
+            </Link>
             </button>
           </form>
         </div>
