@@ -9,13 +9,13 @@ const Choose = () => {
         <div className="drop" style={{ background: 'linear-gradient(135deg, #f25602, #8c6b9e)' }}>
           <div className="content">
             <h2>Organization</h2>
-            <a href="/Dashboard">Click here</a>
+            <Link to="/Org_login">Click here</Link>
           </div>
         </div>
         <div className="drop" style={{ background: 'linear-gradient(135deg, #00a89d, #8c6b9e)' }}>
           <div className="content">
             <h2>User</h2>
-            <Link to="/user">Click here</Link>
+            <Link to="/User_login">Click here</Link>
           </div>
         </div>
       </div>

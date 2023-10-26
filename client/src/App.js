@@ -20,6 +20,8 @@ import SideBarContainer from "./components/Layout/SideBarContainer"
 import Transactions from "./pages/Transactions";
 import AddEvent from './components/AddEventOrg/AddEventOrg';
 import NavbarOrg from './components/NavbarOrg/NavbarOrg';
+import Campaign from './components/Campaigns/Campaigns'
+
 function App() {
   library.add(fas)
   const [count, setCount] = useState(0)
@@ -28,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/user" element={<Home />} />
         <Route path="/event" element={<Event />} /> 
+        <Route path="/campaign" element={<Campaign />} /> 
         <Route path="/history" element={<History />} /> 
         <Route path="/addevent" element={<AddEvent />} /> 
         <Route path="/org" element={<NavbarOrg />} /> 
