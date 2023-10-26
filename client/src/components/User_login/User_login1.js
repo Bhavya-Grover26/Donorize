@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Org_login.css';
+import './User_login1.css';
 import { Link } from 'react-router-dom';
 
-const Org_login = () => {
+const User_login1 = () => {
     return(
         <form className="login">
   <p>Please log in</p>
@@ -12,12 +11,12 @@ const Org_login = () => {
   <input type="submit" value="Log In" />
   <div className="links">
     <a href="#">Forgot password</a>
-    <Link to='/Org_signup'>Register</Link>
+    <Link to='/User_signup'>Register</Link>
   </div>
 </form>
 
         );
     };
     
-    export default Org_login;
+    export default User_login1;
     
