@@ -5,8 +5,6 @@ import Home from './components/Home/Home';
 import Event from './components/Events/Event';
 import History from './components/History/History';
 import Choose from './components/Choose/Choose';
-import User_login from './components/User_login/User_login';
-import Userlogin from './components/User_login/User_login';
 import User_login1 from './components/User_login/User_login1';
 import User_signup from './components/User_signup/User_signup';
 import Org_login from './components/Org_login/Org_login';
@@ -37,8 +35,6 @@ function App() {
         <Route path="/addevent" element={<AddEvent />} /> 
         <Route path="/org" element={<NavbarOrg />} /> 
         <Route path="/" element={<Choose />} /> 
-        <Route path="/User_login" element={<User_login />} /> 
-        <Route path="/Userlogin" element={<Userlogin />} /> 
         <Route path="/User_login" element={<User_login1 />} /> 
         <Route path="/User_signup" element={<User_signup />} /> 
         <Route path="/Org_login" element={<Org_login />} />
