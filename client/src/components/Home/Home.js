@@ -76,21 +76,21 @@ const Home = () => {
 
           {/* Horizontal scrollable card container */}
           <div className="events-container2">
-      <div className="event-card">
+      <div className="eventcard">
         <img src="https://charite.solverwp.com/wp-content/uploads/2023/08/cause-two3-274x249.jpg" alt="Event 1" />
         <h2>The Right of Childen</h2>
         <p>Description of Event 1</p>
         <button>Donate</button>
       </div>
 
-      <div className="event-card">
+      <div className="eventcard">
         <img src="https://charite.solverwp.com/wp-content/uploads/2023/08/cause-two4-274x249.jpg" alt="Event 2" />
         <h2>Event 2</h2>
         <p>Integer pulvinar elementum iaculis. Phasellus non turpis in nisi semper</p>
         <button>Donate</button>
       </div>
 
-      <div className="event-card">
+      <div className="eventcard">
         <img src="https://charite.solverwp.com/wp-content/uploads/2023/08/cause-two5-274x249.jpg" alt="Event 3" />
         <h2>Event 3</h2>
         <p>Description of Event 3</p>

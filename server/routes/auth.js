@@ -32,7 +32,7 @@ router.post('/signupuser',(req,res)=>{
             })
             user.save()
             .then(user=>{
-                res.json({message:"saved succesfully"})
+                res.json({success: true, message:"saved succesfully"})
             })
             .catch(err=>{
                 console.log(err)
@@ -45,32 +45,45 @@ router.post('/signupuser',(req,res)=>{
     }))
 })
 
-router.post('/signinuser',(req,res)=>{
-    const{username,password} = req.body
-    if(!username || !password){
-        return res.status(422).json({error:"please add username or password"})
+router.post('/signinuser', (req, res) => {
+    const { username, password } = req.body;
+    console.log("Received login request with username:", username);
+
+    if (!username || !password) {
+        return res.status(422).json({ error: "Please provide both username and password" });
     }
-    User.findOne({username:username})
-    .then(savedUser=>{
-        if(!savedUser){
-           return res.status(422).json({error:"Invalid username or password"})
-        }
-        bcrypt.compare(password,savedUser.password)
-        .then(doMatch=>{
-            if(doMatch){
-                //res.json({message:"succesfully logged in"})
-                const token = jwt.sign({_id:savedUser._id},JWT_SECRET)
-                res.json({token})
+
+    User.findOne({ username: username })
+        .then(savedUser => {
+            if (!savedUser) {
+                console.log("User not found");
+                return res.status(422).json({ error: "Invalid username or password" });
             }
-            else{
-                return res.status(422).json({error:"Invalid password"})
-            }
+
+            bcrypt.compare(password, savedUser.password)
+                .then(doMatch => {
+                    if (doMatch) {
+                        console.log("Password matched, creating token");
+                        const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
+                        const { _id, username, email } = savedUser;
+                        res.json({ token, user: { _id, username, email } });
+                    } else {
+                        console.log("Invalid password");
+                        return res.status(422).json({ error: "Invalid password" });
+                    }
+                })
+                .catch(err => {
+                    console.error("Error during password comparison:", err);
+                    res.status(500).json({ error: "Internal server error" });
+                });
         })
-        .catch(err=>{
-            console.log(err)
-        })
-    })
-})
+        .catch(err => {
+            console.error("Error finding user:", err);
+            res.status(500).json({ error: "Internal server error" });
+        });
+});
+
+  
 
 router.post('/signinorg',(req,res)=>{
     const{orgname,orgpassword} = req.body
