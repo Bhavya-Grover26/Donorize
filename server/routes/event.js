@@ -16,8 +16,8 @@ router.get('/allevent',(req,res)=>{
 })
 
 router.post('/createevent',requireLogin,(req,res)=>{
-    const{name,shortdesc,longdesc,photo} = req.body
-    if(!name || !shortdesc || !longdesc){
+    const{name,shortdesc,longdesc,pic,objective} = req.body
+    if(!name || !shortdesc || !longdesc || !pic || !objective){
         res.status(422).json({error:"Please add all the fields"})
     }
     req.org.orgpassword = undefined
@@ -25,6 +25,8 @@ router.post('/createevent',requireLogin,(req,res)=>{
         name,
         shortdesc,
         longdesc,
+        objective,
+        pic,
         postedBy:req.org
     })
     event.save().then(result=>{
