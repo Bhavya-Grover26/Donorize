@@ -14,6 +14,14 @@ const eventSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    objective:{
+        type:String,
+        required:true
+    },
+    photo:{
+        type:String,
+        required:true
+    },
     postedBy:{
         type:ObjectId,
         ref:"Org"
