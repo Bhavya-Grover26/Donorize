@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import Routes
+import React, { useState , useEffect, createContext , useReducer} from 'react'
+import { BrowserRouter as Router, Route, Routes , useNavigate} from 'react-router-dom'; // Import Routes
 
 import Home from './components/Home/Home';
 import Event from './components/Events/Event';
@@ -22,29 +22,61 @@ import AddEvent from './components/AddEventOrg/AddEventOrg';
 import NavbarOrg from './components/NavbarOrg/NavbarOrg';
 import Campaign from './components/Campaigns/Campaigns'
 
-function App() {
-  library.add(fas)
-  const [count, setCount] = useState(0)
+import { reducer as userReducer, initialState as userInitialState } from './reducers/userReducer'
+import { reducer as orgReducer, initialState as orgInitialState } from './reducers/orgReducer'
+
+export const UserContext = createContext()
+export const OrgContext = createContext()
+
+
+const Routing = () => {
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    console.log("Inside useEffect");
+    const user = localStorage.getItem("user");
+    const org = localStorage.getItem("org");
+    console.log("User:", user);
+    console.log("Org:", org);
+  }, []);
+  
   return (
-    <Router>
-      <Routes>
-        <Route path="/user" element={<Home />} />
-        <Route path="/event" element={<Event />} /> 
-        <Route path="/campaign" element={<Campaign />} /> 
-        <Route path="/history" element={<History />} /> 
-        <Route path="/addevent" element={<AddEvent />} /> 
-        <Route path="/org" element={<NavbarOrg />} /> 
-        <Route path="/" element={<Choose />} /> 
-        <Route path="/User_login" element={<User_login1 />} /> 
-        <Route path="/User_signup" element={<User_signup />} /> 
-        <Route path="/Org_login" element={<Org_login />} />
-        <Route path="/Org_signup" element={<Org_signup />} />
-        <Route path="/Donation" element={<Donation />}/>
-        <Route path="/Dashboard" element={<Dashboard />}/>
-        <Route path="/transactions" element={<Transactions />} />
+    <Routes>
+      <Route path="/user" element={<Home />} />
+      <Route path="/event" element={<Event />} /> 
+      <Route path="/campaign" element={<Campaign />} /> 
+      <Route path="/history" element={<History />} /> 
+      <Route path="/addevent" element={<AddEvent />} /> 
+      <Route path="/org" element={<NavbarOrg />} /> 
+      <Route path="/" element={<Choose />} /> 
+      <Route path="/User_login" element={<User_login1 />} /> 
+      <Route path="/User_signup" element={<User_signup />} /> 
+      <Route path="/Org_login" element={<Org_login />} />
+      <Route path="/Org_signup" element={<Org_signup />} />
+      <Route path="/Donation" element={<Donation />} />
+      <Route path="/Dashboard" element={<Dashboard />} />
+      <Route path="/transactions" element={<Transactions />} />
       </Routes>
-    </Router>
+  );
+};
+
+
+function App() {
+  const [userState, userDispatch] = useReducer(userReducer, userInitialState);
+  const [orgState, orgDispatch] = useReducer(orgReducer, orgInitialState);
+
+  return (
+    <UserContext.Provider value={{ state: userState, dispatch: userDispatch }}>
+      <OrgContext.Provider value={{ state: orgState, dispatch: orgDispatch }}>
+        <Router>
+          <Routing />
+        </Router>
+      </OrgContext.Provider>
+    </UserContext.Provider>
   );
 }
 
 export default App;
+
+
+

@@ -4,29 +4,39 @@ const mongoose = require('mongoose')
 const requireLogin = require('../middleware/requireLogin')
 const Event =  mongoose.model("Event")
 
-router.get('/allevent',(req,res)=>{
+router.get('/allevent',requireLogin,(req,res)=>{
     Event.find()
+    .select('name shortdesc photo')
     .populate("postedBy","_id orgname address")
-    .then(events=>{
-        res.json(events)
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-})
+    .then(events => {
+        const formattedEvents = events.map(event => ({
+          _id: event._id,
+          name: event.name,
+          shortdesc: event.shortdesc,
+          objective: event.objective,
+          photo: event.photo,
+        }));
+  
+        res.json({ posts: formattedEvents });
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+      });
+  });
 
 router.post('/createevent',requireLogin,(req,res)=>{
-    const{name,shortdesc,longdesc,pic,objective} = req.body
-    if(!name || !shortdesc || !longdesc || !pic || !objective){
+    const{name,shortdesc,pic,objective,date} = req.body
+    if(!name || !shortdesc  || !pic || !objective || !date){
         res.status(422).json({error:"Please add all the fields"})
     }
     req.org.orgpassword = undefined
     const event = new Event({
         name,
         shortdesc,
-        longdesc,
         objective,
-        pic,
+        photo:pic,
+        date,
         postedBy:req.org
     })
     event.save().then(result=>{

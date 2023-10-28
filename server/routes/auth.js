@@ -92,6 +92,7 @@ router.post('/signinorg',(req,res)=>{
     }
     Org.findOne({orgname:orgname})
     .then(savedOrg=>{
+        console.log("Saved Org:", savedOrg);
         if(!savedOrg){
            return res.status(422).json({error:"Invalid orgname or orgpassword"})
         }
