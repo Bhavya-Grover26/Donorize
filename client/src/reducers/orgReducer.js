@@ -8,4 +8,5 @@ export const reducer = (state,action)=>{
         console.log("Logging out")
         return null
     }
+    return state;
 }

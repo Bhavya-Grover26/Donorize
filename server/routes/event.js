@@ -2,9 +2,11 @@ const express = require('express')
 const router = express.Router()
 const mongoose = require('mongoose')
 const requireLogin = require('../middleware/requireLogin')
+const requireOrgLogin = require('../middleware/requireOrgLogin')
 const Event =  mongoose.model("Event")
+const Donation = mongoose.model('Donation');
 
-router.get('/allevent',requireLogin,(req,res)=>{
+router.get('/allevent',(req,res)=>{
     Event.find()
     .select('name shortdesc photo')
     .populate("postedBy","_id orgname address")
@@ -25,7 +27,7 @@ router.get('/allevent',requireLogin,(req,res)=>{
       });
   });
 
-router.post('/createevent',requireLogin,(req,res)=>{
+router.post('/createevent',requireOrgLogin,(req,res)=>{
     const{name,shortdesc,pic,objective,date} = req.body
     if(!name || !shortdesc  || !pic || !objective || !date){
         res.status(422).json({error:"Please add all the fields"})
@@ -47,17 +49,39 @@ router.post('/createevent',requireLogin,(req,res)=>{
     })
 })
 
-router.get('/myevent',requireLogin,(req,res)=>{
-    Event.find({postedBy:req.org._id})
-    .populate("postedBy","_id orgname address")
-    .then(myevent=>{
-        res.json({myevent})
-    })
-    .catch(err=>{
-        console.log(err)
-    })
-})
-
+router.get('/myevent', requireOrgLogin, async (req, res) => {
+    try {
+      const myevents = await Event.find({ postedBy: req.org._id }).populate(
+        'postedBy',
+        '_id orgname address'
+      );
+  
+      // Fetch donation counts for each event
+      const eventsWithDonationCount = await Promise.all(
+        myevents.map(async (event) => {
+          const donations = await Donation.find({
+            eventBy: event._id,
+          });
+  
+          console.log(`Donations for event ${event.name}:`, donations);
+  
+          const donationCount = donations.length;
+          const moneyAmount = donations
+            .filter((donation) => donation.category === 'money')
+            .reduce((acc, donation) => acc + donation.amount, 0);
+  
+          // Add the donationCount and moneyAmount to the event object
+          return { ...event.toObject(), donationCount, moneyAmount };
+        })
+      );
+  
+      res.json({ myevents: eventsWithDonationCount });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  
 
 
 module.exports = router 

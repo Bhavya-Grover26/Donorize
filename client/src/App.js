@@ -30,15 +30,36 @@ export const OrgContext = createContext()
 
 
 const Routing = () => {
+  const [userState, userDispatch] = useReducer(userReducer, userInitialState);
+  const [orgState, orgDispatch] = useReducer(orgReducer, orgInitialState);
   const navigate = useNavigate();
   
   useEffect(() => {
     console.log("Inside useEffect");
-    const user = localStorage.getItem("user");
-    const org = localStorage.getItem("org");
-    console.log("User:", user);
-    console.log("Org:", org);
+  
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        userDispatch({ type: "USER", payload: parsedUser });
+      } catch (error) {
+        console.error("Error parsing user data from localStorage:", error);
+      }
+    }
+  
+    const storedOrg = localStorage.getItem("org");
+    if (storedOrg) {
+      try {
+        const parsedOrg = JSON.parse(storedOrg);
+        orgDispatch({ type: "ORG", payload: parsedOrg });
+      } catch (error) {
+        console.error("Error parsing org data from localStorage:", error);
+      }
+    }
   }, []);
+  
+  
+  
   
   return (
     <Routes>

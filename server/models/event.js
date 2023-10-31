@@ -26,6 +26,10 @@ const eventSchema = new mongoose.Schema({
         type:ObjectId,
         ref:"Org"
     },
+    recieved:{
+        type:String,
+        ref:"Donation"
+    }
 })
 
 mongoose.model("Event",eventSchema)

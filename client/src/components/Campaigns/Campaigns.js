@@ -1,16 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Navbar from '../Navbar/Navbar';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './Campaigns.css';
-
+import { UserContext } from '../../App'
 const Campaign = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
+  const location = useLocation();
+  const userData = location.state && location.state.user;
+  const { state: userState } = useContext(UserContext);
+  
 
   const [donationProgress, setDonationProgress] = useState(50); // Set initial donation progress
 
-  const handleDonate = () => {
-    // Update donation progress on button click (this can be updated based on your actual donation logic)
-    setDonationProgress(prevProgress => prevProgress + 10);
+  const handleDonate = (event) => {
+    const eventData = {
+      _id: event._id,
+      name: event.name,
+      // Add other properties you need
+    };
+  
+    // Pass the extracted data to the Donation page
+    navigate("/Donation", { state: { user: userState, event: eventData } });
   };
+  
 
   useEffect(() => {
     fetch('/allevent', {
@@ -23,6 +36,7 @@ const Campaign = () => {
         console.log("Received data:", result);
         if (result && result.posts) {
           setData(result.posts);
+          console.log('User Data:', userState)
         } else {
           console.error("Invalid data format:", result);
         }
@@ -30,7 +44,7 @@ const Campaign = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [userState]);
   
   return (
     <div className="home">
@@ -49,7 +63,7 @@ const Campaign = () => {
               ></div>
               <div className='progress-text'>{Math.round(campaign.objective)}%</div>
             </div>
-            <button onClick={handleDonate}>Donate</button>
+            <button onClick={() => handleDonate(campaign)}>Donate</button>
           </div>
         ))}
       </div>

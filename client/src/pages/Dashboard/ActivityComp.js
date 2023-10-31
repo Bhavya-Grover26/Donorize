@@ -15,8 +15,8 @@ const ActivityComp = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log('Received data:', result);
-        if (result && result.myevent) {
-          setData(result.myevent);
+        if (result && result.myevents) {
+          setData(result.myevents);
         } else {
           console.error('Invalid data format:', result);
         }

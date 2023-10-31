@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
+import { useLocation } from 'react-router-dom';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -8,6 +9,7 @@ import { BsFillHouseHeartFill } from 'react-icons/bs';
 import { BiMap, BiLeftArrow , BiRightArrow} from 'react-icons/bi';
 import './Home.css'; // Create a CSS file for styling
 import Navbar from '../Navbar/Navbar';
+import { UserContext } from '../../App'
 
 const Home = () => {
   const settings = {
@@ -19,6 +21,18 @@ const Home = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
+
+
+  const location = useLocation();
+  const { state: userState } = useContext(UserContext);
+
+  useEffect(() => {
+    // Access user data from location state
+    if (userState) {
+      console.log('User Data:', userState);
+      // You can now use userState in your component as needed
+    }
+  }, [userState]);
 
   return (
     <div>

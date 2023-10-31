@@ -34,6 +34,9 @@ const Navbar=()=>{
         <li>
           <Link to="/campaign">CAMPAIGNS</Link>
         </li>
+        <li>
+          <Link to="/history">HISTORY</Link>
+        </li>
         <li onClick={() => {
           localStorage.clear();
           dispatch({ type: "CLEAR" });

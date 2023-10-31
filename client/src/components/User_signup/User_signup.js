@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import M from 'materialize-css';
 import './User_signup.css';
+import { UserContext } from '../../App'
 
 export const User_signup = () => {
-
+  const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   const [username,setUsername] = useState("")
   const [password,setPasword] = useState("")
@@ -33,6 +34,12 @@ export const User_signup = () => {
           // Check if the data indicates success
           if (data.success) {
             M.toast({ html: data.message, classes: 'green darken-1' });
+            const userData = {
+              _id: data.user._id,
+              name: data.user.username,
+              // Add other properties you need
+            };
+            dispatch({ type: 'USER', payload: userData });
             console.log("Navigating to User_login");
             navigate("/User_login");
           } else {

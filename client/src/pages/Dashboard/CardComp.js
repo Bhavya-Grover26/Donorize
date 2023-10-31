@@ -13,8 +13,8 @@ const CardComp = () => {
       .then((res) => res.json())
       .then((result) => {
         console.log('Received data:', result);
-        if (result && result.myevent) {
-          setData(result.myevent);
+        if (result && result.myevents) {
+          setData(result.myevents);
         } else {
           console.error('Invalid data format:', result);
         }
@@ -24,18 +24,20 @@ const CardComp = () => {
       });
   }, []);
 
-  // Extract orgname from the first element if it exists
-  const orgname = data.length > 0 ? data[0].postedBy.orgname : '';
+  // Extract orgnames from the first event if it exists
+  const orgnames = data.length > 0 ? [data[0].postedBy.orgname] : [];
 
   return (
     <>
       <Card className="overflow-hidden text-white border-0 credit-card-container">
         <Row>
           <Col>
-            {orgname && (
+            {orgnames.length > 0 && (
               <div>
-                <p className="font-weight-normal">Organization Name</p>
-                <p className="font-weight-bold">{orgname}</p>
+                <p className="font-weight-normal">Organization Names</p>
+                {orgnames.map((orgname, index) => (
+                  <p key={index} className="font-weight-bold">{orgname}</p>
+                ))}
               </div>
             )}
           </Col>

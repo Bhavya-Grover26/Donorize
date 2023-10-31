@@ -12,6 +12,7 @@ const AddEvent = () => {
   const [shortdesc, setShortdesc] = useState('');
   const [objective, setObjective] = useState('');
   const [url, setUrl] = useState('');
+  const [date, setDate] = useState('');
   const [image, setImage] = useState('');
   useEffect(()=>{
     if(url){
@@ -26,6 +27,7 @@ const AddEvent = () => {
         shortdesc,
         objective,
         pic:url,
+        date
         })
       })
         .then(res => res.json())
@@ -97,6 +99,7 @@ const AddEvent = () => {
           <input type="text" placeholder="Event Name" className="EventInput" value={name} onChange={(e) => setName(e.target.value)} />
           <textarea placeholder="Short Description" className="ShortDescriptionTextArea" value={shortdesc} onChange={(e) => setShortdesc(e.target.value)}></textarea>
           <input type="text" placeholder="Maximum Objectives" className="MaximumObjectivesInput" value={objective} onChange={(e) => setObjective(e.target.value)} />
+          <input type="text" placeholder="Date" className="DateInput" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
         <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
             onClick={()=>postDetails()}
