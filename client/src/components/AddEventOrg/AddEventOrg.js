@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect} from 'react';
 import './AddEventOrg.css';
 import { Link, useNavigate } from 'react-router-dom';
 import M from 'materialize-css';
@@ -10,10 +10,39 @@ const AddEvent = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [name, setName] = useState('');
   const [shortdesc, setShortdesc] = useState('');
-  const [longdesc, setLongdesc] = useState('');
   const [objective, setObjective] = useState('');
   const [url, setUrl] = useState('');
+  const [date, setDate] = useState('');
   const [image, setImage] = useState('');
+  useEffect(()=>{
+    if(url){
+      fetch('/createevent', {
+        method: "post",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization":"Bearer "+localStorage.getItem("jwt")
+        },
+        body: JSON.stringify({
+          name,
+        shortdesc,
+        objective,
+        pic:url,
+        date
+        })
+      })
+        .then(res => res.json())
+        .then(data => {
+          console.log("Server response:", data);
+          if (data.error) {
+            M.toast({ html: data.error, classes: 'red darken-3' });
+              console.log("posting error:", data.error);
+          } else {
+              console.log("Navigating to /dashboard");
+              navigate("/dashboard");
+          }
+        })
+    }
+  },[url])
 
   const handleChange = (e) => {
     const file = e.target.files[0];
@@ -41,30 +70,7 @@ const AddEvent = () => {
         console.log(err);
       });
 
-      fetch('/createevent', {
-        method: "post",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          name,
-        shortdesc,
-        longdesc,
-        objective,
-        pic:url,
-        })
-      })
-        .then(res => res.json())
-        .then(data => {
-          console.log("Server response:", data);
-          if (data.error) {
-            M.toast({ html: data.error, classes: 'red darken-3' });
-              console.log("posting error:", data.error);
-          } else {
-              console.log("Navigating to /dashboard");
-              navigate("/dashboard");
-          }
-        })
+      
   };
 
   return (
@@ -92,8 +98,8 @@ const AddEvent = () => {
           {/* Add your form inputs for event name, short description, long description, and maximum objectives */}
           <input type="text" placeholder="Event Name" className="EventInput" value={name} onChange={(e) => setName(e.target.value)} />
           <textarea placeholder="Short Description" className="ShortDescriptionTextArea" value={shortdesc} onChange={(e) => setShortdesc(e.target.value)}></textarea>
-          <textarea placeholder="Long Description" className="LongDescriptionTextArea" value={longdesc} onChange={(e) => setLongdesc(e.target.value)}></textarea>
           <input type="text" placeholder="Maximum Objectives" className="MaximumObjectivesInput" value={objective} onChange={(e) => setObjective(e.target.value)} />
+          <input type="text" placeholder="Date" className="DateInput" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
         <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
             onClick={()=>postDetails()}

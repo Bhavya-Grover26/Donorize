@@ -1,9 +1,34 @@
 import React, { useState,useEffect,useContext } from 'react';
 import Navbar from '../Navbar/Navbar';
 import './History.css'
-
+import { UserContext } from '../../App';
 
 const History = () => {
+  const { state } = useContext(UserContext);
+  const [donations, setDonations] = useState([]);
+  const [totalDonations, setTotalDonations] = useState(0);
+  
+
+  useEffect(() => {
+    // Fetch donation history when the component mounts
+    fetch('/mydonations', {
+      method: 'GET',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("jwt")}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setDonations(data.donations || []);
+        const totalAmount = data.donations.reduce((sum, donation) => sum + donation.amount, 0);
+
+        const totalNumberOfDonations = data.donations.length;
+        setTotalDonations(totalNumberOfDonations);
+      })
+      .catch((error) => {
+        console.error('Error fetching donation history:', error);
+      });
+  });
     
   return (
 <div > 
@@ -17,7 +42,7 @@ const History = () => {
             />
           </div>
           <div className="profile-user-settings">
-            <h1 className="profile-user-name">Username</h1>
+            <h1 className="profile-user-name">{state.username}</h1>
             <button className="btn profile-edit-btn">Edit Profile </button>
             <button
               className="btn profile-settings-btn"
@@ -29,7 +54,7 @@ const History = () => {
           <div className="profile-stats">
             <ul>
               <li>
-                <span className="profile-stat-count">123</span> Donations
+                <span className="profile-stat-count">{totalDonations}</span> Donations
               </li>
             </ul>
           </div>
@@ -48,45 +73,23 @@ const History = () => {
           </div>
 
           {/* Donation rows */}
-          <div className="donation-row">
-            <div className="donation-cell">
-              {/* Image and title in the first column */}
-              <div className="campaign-image">
-                <img
-                  src="https://charite.solverwp.com/wp-content/uploads/2023/08/cause-two3-274x249.jpg"
-                  alt="Campaign Image"
-                />
+          {/* Donation rows */}
+          {donations.map((donation) => (
+            <div key={donation._id} className="donation-row">
+              <div className="donation-cell">
+                {/* Image and title in the first column */}
+                <div className="campaign-title">{donation.eventName}</div>
               </div>
-              <div className="campaign-title">Campaign 1</div>
+              <div className="donation-cell">{donation.category}</div>
+              <div className="donation-cell">{donation.amount}</div>
+              <div className="donation-cell">{donation.paymentMethod}</div>
+              <div className="donation-cell">{new Date(donation.date).toLocaleDateString()}</div>
             </div>
-            <div className="donation-cell">Category A</div>
-            <div className="donation-cell">$50</div>
-            <div className="donation-cell">Credit Card</div>
-            <div className="donation-cell">2023-09-01</div>
-          </div>
-
-          <div className="donation-row">
-            <div className="donation-cell">
-              {/* Image and title in the first column */}
-              <div className="campaign-image">
-                <img
-                  src="https://charite.solverwp.com/wp-content/uploads/2023/08/cause-two4-274x249.jpg"
-                  alt="Campaign Image 2"
-                />
-              </div>
-              <div className="campaign-title">Campaign 2</div>
-            </div>
-            <div className="donation-cell">Category B</div>
-            <div className="donation-cell">$25</div>
-            <div className="donation-cell">PayPal</div>
-            <div className="donation-cell">2023-09-03</div>
-          </div>
-
-          {/* Add more donation rows as needed */}
+          ))}
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default History;

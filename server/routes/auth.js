@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {JWT_SECRET} = require ('../keys')
 const requireLogin = require('../middleware/requireLogin')
+const requireOrgLogin = require('../middleware/requireOrgLogin')
 
 router.get('/',(req,res)=>{
     res.send("hello")
@@ -31,9 +32,9 @@ router.post('/signupuser',(req,res)=>{
     
             })
             user.save()
-            .then(user=>{
-                res.json({success: true, message:"saved succesfully"})
-            })
+            .then((result) => {
+                res.json({ success: true, message: 'User signed up successfully', user: result });
+              })
             .catch(err=>{
                 console.log(err)
             })
@@ -65,6 +66,8 @@ router.post('/signinuser', (req, res) => {
                     if (doMatch) {
                         console.log("Password matched, creating token");
                         const token = jwt.sign({ _id: savedUser._id }, JWT_SECRET);
+                        
+                        console.log('Generated Token:', token);
                         const { _id, username, email } = savedUser;
                         res.json({ token, user: { _id, username, email } });
                     } else {
@@ -92,6 +95,7 @@ router.post('/signinorg',(req,res)=>{
     }
     Org.findOne({orgname:orgname})
     .then(savedOrg=>{
+        console.log("Saved Org:", savedOrg);
         if(!savedOrg){
            return res.status(422).json({error:"Invalid orgname or orgpassword"})
         }
