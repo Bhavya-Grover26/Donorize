@@ -1,6 +1,6 @@
 import React, { useState , useContext, } from 'react';
 import './Org_login.css';
-import {OrgContext , UserContext} from '../../App'
+import {OrgContext} from '../../App'
 import M from 'materialize-css';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -35,7 +35,7 @@ const Org_login = () => {
         } else {
             localStorage.setItem("jwt", (data.token))
             localStorage.setItem("org", JSON.stringify(data.org));
-            dispatch({type:"ORG",payload:data.org}),
+            dispatch({type:"ORG",payload:data.org});
             console.log("Navigating to /user");
             navigate("/Dashboard");
         }
