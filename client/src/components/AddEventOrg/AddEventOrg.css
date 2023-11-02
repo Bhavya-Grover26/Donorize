@@ -96,4 +96,45 @@
   .SubmitButton:hover {
     background-color: #45a049;
   }
+
+  .button-container5 {
+    position: relative;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+     /* Add border style */
+    border-radius: 5px;
+    /* Add other styles for the container if needed */
+  }
+  
+  .submit-button {
+    position: absolute;
+    bottom: 0;
+    left: -220px;
+    transform: translateX(-50%);
+    margin-bottom: -80px; /* Adjust margin based on the button size */
+    background-color: #0074bd; /* Add background color */
+    color: white; /* Set text color */
+    padding: 10px 20px; /* Add padding to the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* Add other button styles */
+  }
+
+  .submit-button:hover{
+    position: absolute;
+    bottom: 0;
+    left: -220px;
+    transform: translateX(-50%);
+    margin-bottom: -80px; /* Adjust margin based on the button size */
+    background-color: #f25602; /* Add background color */
+    color: white; /* Set text color */
+    padding: 10px 20px; /* Add padding to the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* Add other button styles */
+  }
+  
   

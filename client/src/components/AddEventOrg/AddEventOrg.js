@@ -98,15 +98,18 @@ const AddEvent = () => {
           {/* Add your form inputs for event name, short description, long description, and maximum objectives */}
           <input type="text" placeholder="Event Name" className="EventInput" value={name} onChange={(e) => setName(e.target.value)} />
           <textarea placeholder="Short Description" className="ShortDescriptionTextArea" value={shortdesc} onChange={(e) => setShortdesc(e.target.value)}></textarea>
-          <input type="text" placeholder="Maximum Objectives" className="MaximumObjectivesInput" value={objective} onChange={(e) => setObjective(e.target.value)} />
+          <input type="text" placeholder="Objective" className="MaximumObjectivesInput" value={objective} onChange={(e) => setObjective(e.target.value)} />
           <input type="text" placeholder="Date" className="DateInput" value={date} onChange={(e) => setDate(e.target.value)} />
         </div>
-        <button className="btn waves-effect waves-light #64b5f6 blue darken-1"
-            onClick={()=>postDetails()}
-            
-            >
-                Submit post
-            </button>
+        <div className="button-container5">
+          <button
+            className="btn waves-effect waves-light #64b5f6 blue darken-1 submit-button"
+            onClick={() => postDetails()}
+          >
+            Submit post
+          </button>
+        </div>
+
       </div>
     </div>
   );
