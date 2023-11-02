@@ -31,7 +31,7 @@ const Choose = () => {
         </li>
       </ul>
       <div class="btn">
-      <Link to="/Org_login"> {/* Replace "/login" with your actual login route */}
+      <Link to="/Org_login"> 
             <button>Login</button>
           </Link>
         </div>
