@@ -26,7 +26,7 @@ const MetricsComp = () => {
     },
   },
 
-  labels: ["Computer", "Tablet", "Laptop", "Mobile"],
+  labels: ["Money", "Book", "Food", "Cloth"],
   colors: ["primary", "secondar", "orange"],
 };
 

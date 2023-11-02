@@ -10,7 +10,7 @@
 }
 
 .donation-box {
-  width: 390px;
+  width: 690px;
   height: 386px;
   background-color: #F5F5F5;
   border-top-left-radius: 4px;
@@ -22,24 +22,40 @@
 }
 
 .donation-box .title {
-  background-color: #C1D82F;
+  
   width: 100%;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   padding-top: 12px;
   padding-bottom: 12px;
-  font-size: 15px;
+  font-size: 20px;
+}
+
+.donation-box .title2 {
+  
+  width: 100%;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 180px;
+  margin-left: -250px;
+  font-size: 14px;
 }
 
 .donation-box .donate-button {
-  background-color: #C1D82F;
-  width: 100%;
+  background-color: #00a89d;
+  border-radius: 30px;
+  width: 50%;
+  margin-bottom: -30px;
   color: white;
   text-align: center;
-  padding-top: 12px;
-  padding-bottom: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   font-size: 18px;
   bottom: 0px;
   position: absolute;
@@ -79,7 +95,7 @@
 
 .donation-box .amount .button {
   width: 100%;
-  background-color: gray;
+  background-color: #00a89d;
   margin-bottom: 10px;
   text-align: center;
   color: white;
@@ -91,7 +107,7 @@
 }
 
 .donation-box .amount .button:hover {
-  background-color: #393939;
+  background-color: #ffcc00;
 }
 
 .donation-box .amount .button.selected {
@@ -122,7 +138,7 @@
 
 .switch {
   position: absolute;
-  top: 190px;
+  top: 210px;
   left: 15px;
   margin: 20px auto;
   height: 26px;
@@ -186,13 +202,14 @@
 
 .checkboxes {
   position: absolute;
-  top: 242px;
-  left: 13px;
+  top: 272px;
+  left: 16px;
 }
 
 .checkboxes label {
   position: relative;
-  top: -8px;
+  top: -2px;
+  left: 25px;
   font-size: 13px;
   color: gray;
 }

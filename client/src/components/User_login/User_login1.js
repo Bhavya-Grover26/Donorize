@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import './User_login1.css';
 import M from 'materialize-css';
 import { Link, useNavigate } from 'react-router-dom';
+import { UserContext } from '../../App'
 
 const User_login1 = () => {
+    const { dispatch } = useContext(UserContext);
   const navigate = useNavigate();
   const [username,setUsername] = useState("")
   const [password,setPasword] = useState("")
@@ -26,13 +28,23 @@ const User_login1 = () => {
     })
     .then(res => res.json())
     .then(data => {
+        const { token, user } = data;
+        localStorage.setItem('jwt', token);
         console.log("Server response:", data);
         if (data.error) {
           M.toast({ html: data.error, classes: 'red darken-3' });
             console.log("Login error:", data.error);
         } else {
             console.log("Navigating to /user");
-            navigate("/user");
+            const userData = {
+                _id: data.user._id,
+                username: data.user.username,
+                // Add other properties you need
+              };
+              dispatch({ type: 'USER', payload: userData });
+        
+              // Pass the extracted data to the user page
+              navigate("/user", { state: { user: userData } });
         }
     })
     .catch(err => {

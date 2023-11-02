@@ -12,7 +12,7 @@ const Org_signup = () => {
     const [orgpassword,setOrgpassword] = useState("")
   
     const PostData = (e) => {
-      e.preventDefault();  
+      e.preventDefault(); 
       if (!/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(orgemail)) {
           return;
         }

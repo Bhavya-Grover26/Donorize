@@ -1,5 +1,6 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState , useContext, } from 'react';
+import { Link , useNavigate} from 'react-router-dom';
+import {OrgContext , UserContext} from '../../App'
 import './NavbarOrg.css';
 import Event from '../Events/Event';
 import Home from '../Home/Home';
@@ -8,6 +9,8 @@ import { BiUser } from 'react-icons/bi';
 import { IoNotificationsOutline } from 'react-icons/io5';
 
 const NavbarOrg=()=>{
+  const {state,dispatch} = useContext(UserContext)
+  const navigate = useNavigate();
   return(
     <nav>
     <div className="navbar-mod">
@@ -35,7 +38,13 @@ const NavbarOrg=()=>{
           <li>
           <Link to="/">HISTORY</Link>
           </li>
-          <li><a href="#">LOG IN</a></li>
+          <li onClick={() => {
+          localStorage.clear();
+          dispatch({ type: "CLEAR" });
+          navigate("/Org_login")
+        }}>
+          Logout
+        </li>
           <li><i className='bx bx-search icon-large'><BsSearch/></i></li>
           <li><i className='bx bx-user icon-large'><BiUser/></i></li>
           <li><i className='bx bx-notif icon-large'><IoNotificationsOutline/></i></li>
