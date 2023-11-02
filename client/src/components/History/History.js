@@ -35,14 +35,8 @@ const History = () => {
          <Navbar/>
          <div className="container">
         <div className="profile">
-          <div className="profile-image">
-            <img
-              src="https://images.unsplash.com/photo-1513721032312-6a18a42c8763?w=152&h=152&fit=crop&crop=faces"
-              alt=""
-            />
-          </div>
           <div className="profile-user-settings">
-            <h1 className="profile-user-name">{state.username}</h1>
+            <h1 className="profile-user-name">Username:{state.username}</h1>
             <button className="btn profile-edit-btn">Edit Profile </button>
             <button
               className="btn profile-settings-btn"
@@ -66,9 +60,9 @@ const History = () => {
           {/* Header row */}
           <div className="donation-row header">
             <div className="donation-cell">Campaign</div>
+          
             <div className="donation-cell">Category</div>
             <div className="donation-cell">Amount/Item</div>
-            <div className="donation-cell">Payment Method</div>
             <div className="donation-cell">Date</div>
           </div>
 
@@ -80,9 +74,9 @@ const History = () => {
                 {/* Image and title in the first column */}
                 <div className="campaign-title">{donation.eventName}</div>
               </div>
+              
               <div className="donation-cell">{donation.category}</div>
               <div className="donation-cell">{donation.amount}</div>
-              <div className="donation-cell">{donation.paymentMethod}</div>
               <div className="donation-cell">{new Date(donation.date).toLocaleDateString()}</div>
             </div>
           ))}

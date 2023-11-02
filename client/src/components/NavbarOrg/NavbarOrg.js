@@ -32,16 +32,12 @@ const NavbarOrg=()=>{
           <Link to="/addevent">ADD EVENTS</Link>
           </li>
           <li>
-            <a href="#">CAMPAIGNS</a>
-            
-          </li>
-          <li>
-          <Link to="/">HISTORY</Link>
+          <Link to="/Progress">PROGRESS</Link>
           </li>
           <li onClick={() => {
           localStorage.clear();
           dispatch({ type: "CLEAR" });
-          navigate("/Org_login")
+          navigate("/")
         }}>
           Logout
         </li>

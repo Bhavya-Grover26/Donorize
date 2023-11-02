@@ -24,4 +24,3 @@ const Choose = () => {
 }
 
 export default Choose;
-

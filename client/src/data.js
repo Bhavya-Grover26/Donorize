@@ -1,17 +1,14 @@
 const periodData = [
-    {
-      name: "Donation",
-      data: [44, 55, 41, 67, 12, 76, 16, 43, 18, 24, 33, 45]
-    },
-    {
-      name: "Income",
-      data: [3, 12, 34, 7, 27, 18, 14, 23, 11, 13, 25, 21]
-    },
-    {
-      name: "Expenditure",
-      data: [10, 11, 7, 15, 21, 12, 8, 9, 18, 12, 20, 17]
-    },
-  ]
+  {
+    name: "Donation Count",
+    data: [] // Array to store donation counts for each day
+  },
+  {
+    name: "Total Money",
+    data: [] // Array to store total money amounts for each day
+  },
+];
+
   
   const ordersData = [{"id":1,"billingName":"Lyon Bessent","email":"lbessent0@simplemachines.org","total":"$1.07", "status": "Paid", "date":"2/10/2022"},
   {"id":2,"billingName":"Antons Poore","email":"apoore1@nature.com","total":"$5.54", "status": "Paid", "date":"2/15/2022"},

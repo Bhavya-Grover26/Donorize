@@ -29,9 +29,6 @@ const Navbar=()=>{
           <Link to="/user">HOME</Link>
         </li>
         <li>
-          <Link to="/event">EVENTS</Link>
-        </li>
-        <li>
           <Link to="/campaign">CAMPAIGNS</Link>
         </li>
         <li>
@@ -40,7 +37,7 @@ const Navbar=()=>{
         <li onClick={() => {
           localStorage.clear();
           dispatch({ type: "CLEAR" });
-          navigate("/User_login")
+          navigate("/")
         }}>
           Logout
         </li>

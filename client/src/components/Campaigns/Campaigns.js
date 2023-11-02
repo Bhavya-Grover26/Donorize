@@ -56,13 +56,7 @@ const Campaign = () => {
             <img src={campaign.photo} alt={campaign.name} />
             <h2>{campaign.name}</h2>
             <p>{campaign.shortdesc}</p>
-            <div className="progress-bar-container">
-              <div
-                className="progress-bar"
-                style={{ width: `${campaign.donationProgress}%` }}
-              ></div>
-              <div className='progress-text'>{Math.round(campaign.objective)}%</div>
-            </div>
+            
             <button onClick={() => handleDonate(campaign)}>Donate</button>
           </div>
         ))}

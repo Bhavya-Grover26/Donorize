@@ -1,6 +1,7 @@
-import ReactApexChart from "react-apexcharts"
+// ColumnChart.js
+import ReactApexChart from "react-apexcharts";
 
-const ColumnChart = ({ dataColors, periodData }) => {
+const ColumnChart = ({ dataColors, periodData, donationCountsByDate }) => {
   const options = {
     chart: {
       stacked: !0,
@@ -22,24 +23,10 @@ const ColumnChart = ({ dataColors, periodData }) => {
       enabled: !1
     },
     xaxis: {
-      show: true,
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
-      ],
+      categories: donationCountsByDate,
       labels: {
-        show: true
-      }
+        show: true,
+      },
     },
     colors: dataColors,
     legend: {
@@ -48,20 +35,13 @@ const ColumnChart = ({ dataColors, periodData }) => {
     fill: {
       opacity: 1
     }
-  }
+  };
 
   return (
     <>
-      <ReactApexChart
-        options={options}
-        series={[...periodData]}
-        type="bar"
-        height="359"
-        className="apex-charts"
-      />
+      <ReactApexChart options={options} series={periodData} type="bar" height="359" className="apex-charts" />
     </>
-
-  )
-}
+  );
+};
 
 export default ColumnChart;

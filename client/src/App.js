@@ -21,6 +21,7 @@ import Transactions from "./pages/Transactions";
 import AddEvent from './components/AddEventOrg/AddEventOrg';
 import NavbarOrg from './components/NavbarOrg/NavbarOrg';
 import Campaign from './components/Campaigns/Campaigns'
+import Progress from './components/Progress/Progress';
 
 import { reducer as userReducer, initialState as userInitialState } from './reducers/userReducer'
 import { reducer as orgReducer, initialState as orgInitialState } from './reducers/orgReducer'
@@ -76,6 +77,7 @@ const Routing = () => {
       <Route path="/Org_signup" element={<Org_signup />} />
       <Route path="/Donation" element={<Donation />} />
       <Route path="/Dashboard" element={<Dashboard />} />
+      <Route path="/Progress" element={<Progress />} />
       <Route path="/transactions" element={<Transactions />} />
       </Routes>
   );
