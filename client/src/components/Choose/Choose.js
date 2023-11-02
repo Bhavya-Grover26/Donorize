@@ -64,7 +64,7 @@ const Choose = () => {
        
       </ul>
       <div class="btn">
-      <Link to="/User_login"> {/* Replace "/login" with your actual login route */}
+      <Link to="/User_login"> 
             <button>Login</button>
           </Link>
         </div>
