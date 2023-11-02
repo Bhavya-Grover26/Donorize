@@ -35,7 +35,7 @@ const Org_login = () => {
         } else {
             localStorage.setItem("jwt", (data.token))
             localStorage.setItem("org", JSON.stringify(data.org));
-            dispatch({type:"ORG",payload:data.org}),
+            dispatch({type:"ORG",payload:data.org});
             console.log("Navigating to /user");
             navigate("/Dashboard");
         }

@@ -17,8 +17,12 @@ import CityRankings from './CityRankings';
 import { periodData } from '../../data.js';
 import NavbarOrg from '../../components/NavbarOrg/NavbarOrg';
 
+
 const Dashboard = () => {
   const [myevents, setMyEvents] = useState([]);
+  const [donationsPerDay, setDonationsPerDay] = useState({});
+  const [aggregatedData, setAggregatedData] = useState([]);
+
 
   useEffect(() => {
     fetch('/myevent', {
@@ -31,6 +35,7 @@ const Dashboard = () => {
         console.log('Received data:', result);
         if (result && result.myevents) {
           setMyEvents(result.myevents);
+          setDonationsPerDay(result.donationsPerDay);
         } else {
           console.error('Invalid data format:', result);
         }
@@ -56,7 +61,6 @@ const Dashboard = () => {
   const reports = [
     { title: 'Donations', iconClass: 'fa-dollar', description: totalDonations, percent: '+1.2' },
     { title: 'Amount Collected', iconClass: 'fa-money-check-dollar', description: `$${totalMoneyAmount}`, percent: '-5' },
-    
   ];
 
   return (
@@ -100,7 +104,16 @@ const Dashboard = () => {
             <Row>
               <Col xs="12">
                 <Card>
-                  <ColumnChart periodData={periodData} dataColors={['#3258F2', '#F2545B', '#A93F55']} />
+                <ColumnChart
+  periodData={[
+    { name: 'Donation Count', data: myevents.map((event) => event.donationCount) },
+    { name: 'Total Money', data: myevents.map((event) => event.moneyAmount) },
+  ]}
+  dataColors={['#3258F2', '#F2545B', '#A93F55']}
+  donationCountsByDate={myevents.length > 0 ? myevents[0].donationDates : []}
+/>
+
+
                 </Card>
               </Col>
             </Row>
