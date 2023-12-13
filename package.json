@@ -24,7 +24,6 @@
     "reactstrap": "^9.2.0",
     "resolve-url-loader": "^5.0.0",
     "sass": "^1.69.4",
-    "sass-loader": "^13.3.2",
-    "@babel/plugin-proposal-private-property-in-object":"7.21.11"
+    "sass-loader": "^13.3.2"
   }
 }
